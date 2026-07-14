@@ -390,10 +390,24 @@ app.innerHTML = `
       </section>
     </main>
 
-
-    </main>
+    <div class="video-modal" data-video-modal hidden>
+      <div class="video-modal__backdrop" data-close-film></div>
+      <div class="video-modal__panel" role="dialog" aria-modal="true" aria-label="Royal Enfield model film">
+        <button class="video-modal__close" type="button" aria-label="Close video" data-close-film>&times;</button>
+        <div class="video-modal__frame">
+          <iframe
+            data-film-frame
+            title="Royal Enfield film"
+            src=""
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
   </div>
 `;
+
 const root = document.documentElement;
 const loader = document.querySelector("[data-loader]");
 const stage = document.querySelector("[data-stage]");
@@ -409,16 +423,15 @@ const videoModal = document.querySelector("[data-video-modal]");
 let selectedModelIndex = 0;
 let selectedVariantIndex = 0;
 let autoRotateTimer = null;
-let progressTimer = null;
-let progressValue = 0;
 
-function buildReserveOptions() {
+const filmFrame = document.querySelector("[data-film-frame]");
+const videoModal = document.querySelector("[data-video-modal]");
   reserveModel.innerHTML = models
     .map((model) => `<option value="${model.name}">${model.name}</option>`)
     .join("");
 }
 
-
+function renderModelTabs() {
   const tabsMarkup = models
     .map(
       (model, index) => `
@@ -587,6 +600,33 @@ function setVariant(index) {
   updateSelectedVariantImage();
   resetRotation();
 }
+
+function openFilm() {
+  const model = models[selectedModelIndex];
+  filmFrame.src = `${model.film}&autoplay=1`;
+  videoModal.hidden = false;
+  document.body.classList.add("is-modal-open");
+}
+
+function closeFilm() {
+  filmFrame.src = "";
+  videoModal.hidden = true;
+  document.body.classList.remove("is-modal-open");
+}
+
+
+  button.addEventListener("click", openFilm);
+});
+
+document.querySelectorAll("[data-close-film]").forEach((button) => {
+  button.addEventListener("click", closeFilm);
+});
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !videoModal.hidden) {
+    closeFilm();
+  }
+});
 
 
   event.preventDefault();

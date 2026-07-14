@@ -1148,3 +1148,73 @@ h2 {
     transform: scaleX(0);
   }
   to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero,
+  .showcase-card,
+  .config-shell,
+  .reserve__card,
+  .lineup__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__stage {
+    min-height: 860px;
+  }
+
+  .stage-panel--left,
+  .stage-panel--right {
+    width: calc(50% - 1.8rem);
+  }
+
+  .hero-bike {
+    inset: 18% 10% 17%;
+  }
+}
+
+@media (max-width: 820px) {
+  .topbar {
+    border-radius: 26px;
+  }
+
+  .topbar__nav {
+    position: absolute;
+    top: calc(100% + 0.7rem);
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background: rgba(7, 7, 7, 0.94);
+  }
+
+  .topbar__nav.is-open {
+    display: flex;
+  }
+
+  .topbar__menu {
+    display: inline-block;
+  }
+
+  h1 {
+    font-size: clamp(3.3rem, 17vw, 5.2rem);
+  }
+
+  h2 {
+    font-size: clamp(2.4rem, 12vw, 3.8rem);
+  }
+
