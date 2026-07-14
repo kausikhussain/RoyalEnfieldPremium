@@ -1268,3 +1268,33 @@ h2 {
     padding-top: 3rem;
   }
 
+  .showcase-card,
+  .config-shell,
+  .reserve__card {
+    padding: 1rem;
+  }
+
+  .showcase-card__media,
+  .config-preview__image-wrap {
+    min-height: 280px;
+  }
+
+  .lineup {
+    padding-top: 4.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

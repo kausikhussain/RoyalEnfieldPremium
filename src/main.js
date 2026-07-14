@@ -651,7 +651,7 @@ function wireDynamicButtons() {
   });
 }
 
-
+menuToggle.addEventListener("click", () => {
   nav.classList.toggle("is-open");
   menuToggle.classList.toggle("is-open");
 });
@@ -695,14 +695,42 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.18 }
+);
+
+document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
+
+document.querySelectorAll("img").forEach((image) => {
+  image.addEventListener("load", () => image.classList.add("is-ready"));
+});
 
 window.addEventListener("load", () => {
   window.setTimeout(() => loader.classList.add("is-hidden"), 900);
-  buildReserveOptions();
-  renderModelTabs();
-  renderVariants();
-  renderLineup();
-  updateSelectedVariantImage();
-  wireDynamicButtons();
-  resetRotation();
 });
+
+reserveForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const data = new FormData(reserveForm);
+  const rider = data.get("name");
+  const machine = data.get("model");
+  message.textContent = `Thanks, ${rider}. Your ${machine} request is ready for follow-up.`;
+  reserveForm.reset();
+  reserveModel.value = models[selectedModelIndex].name;
+});
+
+buildReserveOptions();
+renderModelTabs();
+renderVariants();
+renderLineup();
+updateSelectedVariantImage();
+wireDynamicButtons();
+resetRotation();
