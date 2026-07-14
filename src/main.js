@@ -234,13 +234,47 @@ app.innerHTML = `
         </div>
       </section>
 
-
+      <section class="ticker">
+        <div class="ticker__track">
+          <span>Official bike imagery</span>
+          <span>Reference-inspired sequencing</span>
+          <span>Animated model switching</span>
+          <span>Responsive glassmorphism panels</span>
+          <span>Working video lightbox</span>
         </div>
+      </section>
+
+      <section class="showcase" id="showcase">
+        <div class="section-heading reveal">
+          <p class="eyebrow eyebrow--dark">Visual breakdown</p>
+          <h2>The bright product section now behaves like a real showcase.</h2>
+          <p>
+            The reference transitions from a moody launch frame into a clean catalogue. This section mirrors that move
+            with a white canvas, highlighted stats, proper bike imagery, and a stronger product hierarchy.
+          </p>
+        </div>
+
+        <div class="showcase-card reveal">
+          <div class="showcase-card__media">
+            <div class="showcase-card__glow"></div>
+            <img data-gallery-image src="/media/gt-rocker-red.png" alt="Continental GT 650 studio shot" />
+          </div>
+          <div class="showcase-card__body">
+            <p class="showcase-card__eyebrow" data-gallery-category>Cafe racer</p>
+            <h3 data-gallery-name>Continental GT 650</h3>
+            <p data-gallery-story>
+              Clip-ons, twin-cylinder urgency, and a low silhouette tuned to feel lean, fast, and precise.
+            </p>
+            <div class="showcase-card__specs" data-gallery-specs></div>
+          </div>
+        </div>
+      </section>
+
+
       </section>
     </main>
   </div>
 `;
-
 const root = document.documentElement;
 const loader = document.querySelector("[data-loader]");
 const stage = document.querySelector("[data-stage]");

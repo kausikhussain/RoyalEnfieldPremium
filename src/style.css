@@ -698,3 +698,153 @@ h2 {
   align-content: center;
   gap: 1rem;
   padding: 1rem;
+}
+
+.showcase-card__body h3,
+.config-preview h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  text-transform: uppercase;
+  line-height: 0.96;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.showcase-card__body p {
+  margin: 0;
+  color: rgba(31, 20, 13, 0.72);
+}
+
+.showcase-card__specs {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.showcase-card__specs article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border-dark);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.showcase-card__specs span {
+  color: rgba(31, 20, 13, 0.58);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.76rem;
+}
+
+.showcase-card__specs strong {
+  color: var(--ink);
+}
+
+.lineup {
+  position: relative;
+  padding: 5.5rem 0 5rem;
+  color: white;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255, 107, 26, 0.28), transparent 22%),
+    linear-gradient(180deg, #160d08 0%, #0d0806 100%);
+}
+
+.lineup__wave {
+  position: absolute;
+  inset: -1px 0 auto;
+  height: 180px;
+  background:
+    radial-gradient(125% 155px at 50% 0, transparent 47%, #f06d17 48%, #f06d17 66%, #160d08 67%);
+}
+
+.lineup__intro {
+  position: relative;
+  margin-bottom: 1.8rem;
+}
+
+.lineup__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lineup-card {
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.lineup-card.is-active,
+.lineup-card:hover,
+.lineup-card:focus-within {
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lineup-card__inner {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+}
+
+.lineup-card__visual {
+  position: relative;
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at center, color-mix(in srgb, var(--card-accent) 30%, white) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+}
+
+.lineup-card__visual img {
+  width: 92%;
+  opacity: 1;
+  transform: none;
+}
+
+.lineup-card__body {
+  padding: 1rem 0.2rem 0.3rem;
+}
+
+.lineup-card h3 {
+  margin: 0.35rem 0 0.55rem;
+  font-size: 2rem;
+}
+
+.lineup-card p {
+  margin: 0;
+  color: rgba(245, 237, 228, 0.72);
+}
+
+.lineup-card__specs {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.lineup-card__specs strong {
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.88rem;
+}
+
+.configure {
+  padding: 4.4rem 0 5rem;
+  color: var(--ink);
+}
+
