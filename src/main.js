@@ -241,15 +241,180 @@ app.innerHTML = `
   </div>
 `;
 
+const root = document.documentElement;
 const loader = document.querySelector("[data-loader]");
+const stage = document.querySelector("[data-stage]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector(".topbar__nav");
+const message = document.querySelector(".reserve-form__message");
+const reserveForm = document.querySelector("[data-reserve-form]");
+const reserveModel = document.querySelector("[data-reserve-model]");
+const rotationBar = document.querySelector("[data-rotation-bar]");
+const filmFrame = document.querySelector("[data-film-frame]");
+const videoModal = document.querySelector("[data-video-modal]");
 
-menuToggle.addEventListener("click", () => {
-  nav.classList.toggle("is-open");
-  menuToggle.classList.toggle("is-open");
-});
+let selectedModelIndex = 0;
+let selectedVariantIndex = 0;
+let autoRotateTimer = null;
+
+  const tabsMarkup = models
+    .map(
+      (model, index) => `
+        <button class="model-tab ${index === selectedModelIndex ? "is-active" : ""}" type="button" data-select-model="${index}">
+          <span>${model.category}</span>
+          <strong>${model.name}</strong>
+        </button>
+      `
+    )
+    .join("");
+
+  const configMarkup = models
+    .map(
+      (model, index) => `
+        <button class="config-choice ${index === selectedModelIndex ? "is-active" : ""}" type="button" data-select-model="${index}">
+          <span>${model.category}</span>
+          <strong>${model.name}</strong>
+        </button>
+      `
+    )
+    .join("");
+
+  document.querySelector("[data-model-tabs]").innerHTML = tabsMarkup;
+  document.querySelector("[data-config-models]").innerHTML = configMarkup;
+}
+
+function renderVariants() {
+  const model = models[selectedModelIndex];
+  const markup = model.variants
+    .map(
+      (variant, index) => `
+        <button
+          class="swatch ${index === selectedVariantIndex ? "is-active" : ""}"
+          type="button"
+          title="${variant.name}"
+          aria-label="${variant.name}"
+          data-select-variant="${index}"
+          style="--swatch:${variant.hex}"
+        >
+          <span></span>
+        </button>
+      `
+    )
+    .join("");
+
+  document.querySelector("[data-variant-swatches]").innerHTML = markup;
+  document.querySelector("[data-config-swatches]").innerHTML = markup;
+}
+
+
+  const model = models[selectedModelIndex];
+  const variant = model.variants[selectedVariantIndex];
+
+  root.style.setProperty("--accent", model.accent);
+  root.style.setProperty("--accent-soft", model.accentSoft);
+  root.style.setProperty("--hero-gradient", model.gradient);
+
+  document.querySelector("[data-model-name]").textContent = model.name;
+  document.querySelector("[data-model-category]").textContent = model.category;
+  document.querySelector("[data-model-story]").textContent = model.story;
+
+  document.querySelector("[data-hero-engine]").textContent = model.engine;
+  document.querySelector("[data-hero-power]").textContent = model.power;
+  document.querySelector("[data-hero-range]").textContent = model.range;
+  document.querySelector("[data-hero-torque]").textContent = model.torque;
+  document.querySelector("[data-hero-speed]").textContent = model.topSpeed;
+
+  document.querySelector("[data-gallery-category]").textContent = model.category;
+  document.querySelector("[data-gallery-name]").textContent = model.name;
+  document.querySelector("[data-gallery-story]").textContent = model.story;
+  document.querySelector("[data-preview-tag]").textContent = model.heroTag;
+  document.querySelector("[data-preview-name]").textContent = model.name;
+  document.querySelector("[data-preview-power]").textContent = model.power;
+  document.querySelector("[data-preview-torque]").textContent = model.torque;
+  document.querySelector("[data-preview-speed]").textContent = model.topSpeed;
+
+  document.querySelector("[data-chip-0]").textContent = model.chips[0];
+  document.querySelector("[data-chip-1]").textContent = model.chips[1];
+  document.querySelector("[data-chip-2]").textContent = model.chips[2];
+  document.querySelector("[data-chip-3]").textContent = model.chips[3];
+
+  document.querySelector("[data-gallery-specs]").innerHTML = model.specs
+    .map(
+      (spec) => `
+        <article>
+          <span>${spec.label}</span>
+          <strong>${spec.value}</strong>
+        </article>
+      `
+    )
+    .join("");
+
+  const heroImage = document.querySelector("[data-hero-image]");
+  const galleryImage = document.querySelector("[data-gallery-image]");
+  const configImage = document.querySelector("[data-config-image]");
+
+  [heroImage, galleryImage, configImage].forEach((image) => {
+    image.classList.remove("is-ready");
+    image.src = variant.image;
+    image.alt = `${model.name} in ${variant.name}`;
+  });
+
+  reserveModel.value = model.name;
+
+  document.querySelectorAll("[data-select-model]").forEach((button) => {
+    button.classList.toggle("is-active", Number(button.dataset.selectModel) === selectedModelIndex);
+  });
+
+  document.querySelectorAll("[data-select-variant]").forEach((button) => {
+    button.classList.toggle("is-active", Number(button.dataset.selectVariant) === selectedVariantIndex);
+  });
+
+  document.querySelectorAll(".lineup-card").forEach((card, index) => {
+    card.classList.toggle("is-active", index === selectedModelIndex);
+  });
+}
+
+function setModel(index, preserveVariant = false) {
+  selectedModelIndex = index;
+  if (!preserveVariant) {
+    selectedVariantIndex = 0;
+  } else {
+    selectedVariantIndex = Math.min(selectedVariantIndex, models[index].variants.length - 1);
+  }
+
+  renderModelTabs();
+  renderVariants();
+  renderLineup();
+  updateSelectedVariantImage();
+  wireDynamicButtons();
+  resetRotation();
+}
+
+function setVariant(index) {
+  selectedVariantIndex = index;
+  updateSelectedVariantImage();
+  resetRotation();
+}
+
 
 window.addEventListener("load", () => {
   window.setTimeout(() => loader.classList.add("is-hidden"), 900);
+  renderModelTabs();
+  renderVariants();
+  updateSelectedVariantImage();
+  wireDynamicButtons();
 });
+
+function wireDynamicButtons() {
+  document.querySelectorAll("[data-select-model]").forEach((button) => {
+    button.addEventListener("click", () => {
+      setModel(Number(button.dataset.selectModel));
+    });
+  });
+
+  document.querySelectorAll("[data-select-variant]").forEach((button) => {
+    button.addEventListener("click", () => {
+      setVariant(Number(button.dataset.selectVariant));
+    });
+  });
+}
