@@ -848,3 +848,103 @@ h2 {
   color: var(--ink);
 }
 
+.config-shell {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 34px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow-soft);
+}
+
+.config-shell__controls,
+.config-preview {
+  height: 100%;
+}
+
+.config-shell__controls {
+  display: grid;
+  gap: 1rem;
+}
+
+.config-block {
+  padding: 1rem;
+  border: 1px solid var(--border-dark);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.66);
+}
+
+.config-block__label {
+  margin: 0 0 0.9rem;
+  color: rgba(31, 20, 13, 0.58);
+}
+
+.config-block__choices {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.config-choice {
+  color: var(--ink);
+  border-color: var(--border-dark);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.config-choice.is-active {
+  border-color: color-mix(in srgb, var(--accent) 38%, white);
+  background: var(--hero-gradient);
+}
+
+.config-checks {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.config-checks article {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid var(--border-dark);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.config-checks span {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: white;
+  background: var(--ink);
+  font-weight: 800;
+}
+
+.config-checks p {
+  margin: 0;
+  color: rgba(31, 20, 13, 0.74);
+}
+
+.config-preview {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at center, rgba(255, 107, 26, 0.12), transparent 28%),
+    linear-gradient(180deg, #fff9f2 0%, #f0e6d7 100%);
+}
+
+.config-preview__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.config-preview__top p {
+  margin: 0 0 0.4rem;
+  color: rgba(31, 20, 13, 0.58);

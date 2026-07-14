@@ -270,6 +270,14 @@ app.innerHTML = `
         </div>
       </section>
 
+      <section class="lineup" id="lineup">
+        <div class="lineup__wave"></div>
+        <div class="lineup__intro reveal">
+          <p class="eyebrow">Popular bikes</p>
+          <h2>A stronger lineup section, closer to the rhythm of the reference.</h2>
+        </div>
+        <div class="lineup__grid" data-lineup-grid></div>
+      </section>
 
       </section>
     </main>
@@ -338,6 +346,36 @@ function renderVariants() {
 
   document.querySelector("[data-variant-swatches]").innerHTML = markup;
   document.querySelector("[data-config-swatches]").innerHTML = markup;
+}
+
+function renderLineup() {
+  const markup = models
+    .map((model, index) => {
+      const previewVariant = model.variants[0];
+      const active = index === selectedModelIndex;
+      return `
+        <article class="lineup-card ${active ? "is-active" : ""} reveal" style="--card-accent:${model.accent}">
+          <button class="lineup-card__inner" type="button" data-select-model="${index}">
+            <div class="lineup-card__visual">
+              <div class="lineup-card__glow"></div>
+              <img src="${previewVariant.image}" alt="${model.name} in ${previewVariant.name}" />
+            </div>
+            <div class="lineup-card__body">
+              <span>${model.category}</span>
+              <h3>${model.name}</h3>
+              <p>${model.story}</p>
+              <div class="lineup-card__specs">
+                <strong>${model.topSpeed}</strong>
+                <strong>${model.range}</strong>
+              </div>
+            </div>
+          </button>
+        </article>
+      `;
+    })
+    .join("");
+
+  document.querySelector("[data-lineup-grid]").innerHTML = markup;
 }
 
 
@@ -435,6 +473,7 @@ window.addEventListener("load", () => {
   window.setTimeout(() => loader.classList.add("is-hidden"), 900);
   renderModelTabs();
   renderVariants();
+  renderLineup();
   updateSelectedVariantImage();
   wireDynamicButtons();
 });
