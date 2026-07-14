@@ -126,18 +126,46 @@ const models = [
   }
 ];
 
-
 const app = document.querySelector("#app");
+
 app.innerHTML = `
   <div class="site-shell">
     <div class="loader" data-loader>
       <div class="loader__wordmark">Royal Enfield</div>
       <div class="loader__bar"><span></span></div>
     </div>
+
+    <header class="topbar">
+      <a class="brand" href="#hero">
+        <span class="brand__mark"></span>
+        <span class="brand__text">Royal Enfield</span>
+      </a>
+      <nav class="topbar__nav">
+        <a href="#hero">Home</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#lineup">Lineup</a>
+        <a href="#configure">Configure</a>
+        <a href="#reserve">Reserve</a>
+      </nav>
+      <button class="topbar__menu" type="button" aria-label="Toggle navigation" data-menu-toggle>
+        <span></span><span></span>
+      </button>
+    </header>
+
+
+    </main>
   </div>
 `;
 
 const loader = document.querySelector("[data-loader]");
+const menuToggle = document.querySelector("[data-menu-toggle]");
+const nav = document.querySelector(".topbar__nav");
+
+menuToggle.addEventListener("click", () => {
+  nav.classList.toggle("is-open");
+  menuToggle.classList.toggle("is-open");
+});
+
 window.addEventListener("load", () => {
   window.setTimeout(() => loader.classList.add("is-hidden"), 900);
 });

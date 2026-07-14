@@ -119,3 +119,80 @@ h3,
   animation: loading 1.2s ease forwards;
 }
 
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(var(--max-width), calc(100% - 2rem));
+  margin: 1rem auto 0;
+  padding: 0.95rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(7, 7, 7, 0.62);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand__mark {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffe3c2, var(--accent));
+  box-shadow: 0 0 18px rgba(255, 107, 26, 0.72);
+}
+
+.brand__text {
+  font-size: 1.45rem;
+}
+
+.topbar__nav {
+  display: inline-flex;
+  gap: 1.25rem;
+  color: var(--muted);
+}
+
+.topbar__nav a {
+  transition: color 0.25s ease;
+}
+
+.topbar__nav a:hover,
+.topbar__nav a:focus-visible {
+  color: white;
+}
+
+.topbar__menu {
+  display: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: white;
+}
+
+.topbar__menu span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 5px 0;
+  background: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.topbar__menu.is-open span:first-child {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.topbar__menu.is-open span:last-child {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+main section {
