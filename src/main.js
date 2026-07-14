@@ -152,7 +152,40 @@ app.innerHTML = `
       </button>
     </header>
 
+    <main>
+      <section class="hero" id="hero">
+        <div class="hero__copy reveal">
+          <p class="eyebrow">Royal Enfield immersive concept</p>
+          <h1>Same energy as the reference. More polished. Fully working.</h1>
+          <p class="hero__lede">
+            A darker launch stage, brighter catalogue transition, richer product imagery, animated model switching,
+            working video previews, and a smoother responsive flow built around official Royal Enfield bike assets.
+          </p>
 
+          <div class="hero__actions">
+            <a class="button button--primary" href="#reserve">Reserve a Test Ride</a>
+            <a class="button button--ghost" href="#configure">Explore the Configurator</a>
+          </div>
+
+          <div class="hero__metrics">
+            <article>
+              <span data-hero-engine>648 cc</span>
+              <p>Engine platform</p>
+            </article>
+            <article>
+              <span data-hero-power>47 hp</span>
+              <p>Peak output</p>
+            </article>
+            <article>
+              <span data-hero-range>315 km</span>
+              <p>Estimated ride range</p>
+            </article>
+          </div>
+        </div>
+
+
+        </div>
+      </section>
     </main>
   </div>
 `;
