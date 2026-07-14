@@ -344,7 +344,53 @@ app.innerHTML = `
         </div>
       </section>
 
+      <section class="media reveal" id="media">
+        <div class="media__card">
+          <div>
+            <p class="eyebrow">Film and motion</p>
+            <h2>Video interaction is wired up too, not just mocked.</h2>
+            <p class="media__copy">
+              Open the selected model film in a lightbox, keep the page context intact, and preserve the premium flow
+              instead of kicking people away from the experience.
+            </p>
+          </div>
+          <button class="button button--primary" type="button" data-open-film>
+            Open Selected Film
+          </button>
+        </div>
       </section>
+
+      <section class="reserve" id="reserve">
+        <div class="reserve__card reveal">
+          <div class="reserve__copy">
+            <p class="eyebrow eyebrow--dark">Reserve the ride</p>
+            <h2>Book a test ride with the same machine selected everywhere else.</h2>
+            <p>
+              The chosen model now pre-fills the form so the conversion path feels connected to the interactions above.
+            </p>
+          </div>
+
+          <form class="reserve-form" data-reserve-form>
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" placeholder="Rider name" required />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+            <label>
+              <span>Preferred machine</span>
+              <select name="model" data-reserve-model></select>
+            </label>
+            <button class="button button--primary" type="submit">Request Test Ride</button>
+            <p class="reserve-form__message" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+
     </main>
   </div>
 `;
@@ -363,6 +409,15 @@ const videoModal = document.querySelector("[data-video-modal]");
 let selectedModelIndex = 0;
 let selectedVariantIndex = 0;
 let autoRotateTimer = null;
+let progressTimer = null;
+let progressValue = 0;
+
+function buildReserveOptions() {
+  reserveModel.innerHTML = models
+    .map((model) => `<option value="${model.name}">${model.name}</option>`)
+    .join("");
+}
+
 
   const tabsMarkup = models
     .map(
@@ -534,8 +589,20 @@ function setVariant(index) {
 }
 
 
+  event.preventDefault();
+  const data = new FormData(reserveForm);
+  const rider = data.get("name");
+  const machine = data.get("model");
+  message.textContent = `Thanks, ${rider}. Your ${machine} request is ready for follow-up.`;
+  reserveForm.reset();
+  reserveModel.value = models[selectedModelIndex].name;
+});
+
+buildReserveOptions();
+
 window.addEventListener("load", () => {
   window.setTimeout(() => loader.classList.add("is-hidden"), 900);
+  buildReserveOptions();
   renderModelTabs();
   renderVariants();
   renderLineup();
