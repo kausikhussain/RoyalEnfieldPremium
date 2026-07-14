@@ -279,6 +279,71 @@ app.innerHTML = `
         <div class="lineup__grid" data-lineup-grid></div>
       </section>
 
+      <section class="configure" id="configure">
+        <div class="section-heading reveal">
+          <p class="eyebrow eyebrow--dark">Configure and preview</p>
+          <h2>Switch bikes, swap variants, and keep the stage in sync.</h2>
+          <p>
+            The same selected state now drives the hero, the bright showcase, the lineup emphasis, and the reserve flow
+            so the experience behaves like one connected product story.
+          </p>
+        </div>
+
+        <div class="config-shell reveal">
+          <div class="config-shell__controls">
+            <div class="config-block">
+              <p class="config-block__label">Choose your bike</p>
+              <div class="config-block__choices" data-config-models></div>
+            </div>
+
+            <div class="config-block">
+              <p class="config-block__label">Available finishes</p>
+              <div class="config-block__swatches" data-config-swatches></div>
+            </div>
+
+            <div class="config-checks">
+              <article>
+                <span>01</span>
+                <p>Model-linked imagery updates instantly</p>
+              </article>
+              <article>
+                <span>02</span>
+                <p>Accent colors drive panels, buttons, and glows</p>
+              </article>
+              <article>
+                <span>03</span>
+                <p>Video modal and reserve form stay in sync</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="config-shell__preview">
+            <div class="config-preview">
+              <div class="config-preview__top">
+                <div>
+                  <p data-preview-tag>Built for late-night city runs</p>
+                  <h3 data-preview-name>Continental GT 650</h3>
+                </div>
+                <button class="button button--ghost-dark" type="button" data-open-film>
+                  Play video
+                </button>
+              </div>
+
+              <div class="config-preview__image-wrap">
+                <div class="config-preview__glow"></div>
+                <img data-config-image src="/media/gt-rocker-red.png" alt="Continental GT 650 preview" />
+              </div>
+
+              <div class="config-preview__stats">
+                <article><span data-preview-power>47 hp</span><p>Peak power</p></article>
+                <article><span data-preview-torque>52.3 Nm</span><p>Torque</p></article>
+                <article><span data-preview-speed>169 km/h</span><p>Top speed</p></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       </section>
     </main>
   </div>
@@ -378,7 +443,7 @@ function renderLineup() {
   document.querySelector("[data-lineup-grid]").innerHTML = markup;
 }
 
-
+function updateSelectedVariantImage() {
   const model = models[selectedModelIndex];
   const variant = model.variants[selectedVariantIndex];
 
