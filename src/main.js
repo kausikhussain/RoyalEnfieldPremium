@@ -423,9 +423,10 @@ const videoModal = document.querySelector("[data-video-modal]");
 let selectedModelIndex = 0;
 let selectedVariantIndex = 0;
 let autoRotateTimer = null;
+let progressTimer = null;
+let progressValue = 0;
 
-const filmFrame = document.querySelector("[data-film-frame]");
-const videoModal = document.querySelector("[data-video-modal]");
+function buildReserveOptions() {
   reserveModel.innerHTML = models
     .map((model) => `<option value="${model.name}">${model.name}</option>`)
     .join("");
@@ -614,41 +615,27 @@ function closeFilm() {
   document.body.classList.remove("is-modal-open");
 }
 
-
-  button.addEventListener("click", openFilm);
-});
-
-document.querySelectorAll("[data-close-film]").forEach((button) => {
-  button.addEventListener("click", closeFilm);
-});
-
-window.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !videoModal.hidden) {
-    closeFilm();
+function resetRotation() {
+  if (autoRotateTimer) {
+    window.clearInterval(autoRotateTimer);
   }
-});
+  if (progressTimer) {
+    window.clearInterval(progressTimer);
+  }
 
+  progressValue = 0;
+  rotationBar.style.transform = "scaleX(0)";
 
-  event.preventDefault();
-  const data = new FormData(reserveForm);
-  const rider = data.get("name");
-  const machine = data.get("model");
-  message.textContent = `Thanks, ${rider}. Your ${machine} request is ready for follow-up.`;
-  reserveForm.reset();
-  reserveModel.value = models[selectedModelIndex].name;
-});
+  progressTimer = window.setInterval(() => {
+    progressValue = Math.min(progressValue + 2, 100);
+    rotationBar.style.transform = `scaleX(${progressValue / 100})`;
+  }, 100);
 
-buildReserveOptions();
-
-window.addEventListener("load", () => {
-  window.setTimeout(() => loader.classList.add("is-hidden"), 900);
-  buildReserveOptions();
-  renderModelTabs();
-  renderVariants();
-  renderLineup();
-  updateSelectedVariantImage();
-  wireDynamicButtons();
-});
+  autoRotateTimer = window.setInterval(() => {
+    const nextModel = (selectedModelIndex + 1) % models.length;
+    setModel(nextModel);
+  }, 5000);
+}
 
 function wireDynamicButtons() {
   document.querySelectorAll("[data-select-model]").forEach((button) => {
@@ -663,3 +650,59 @@ function wireDynamicButtons() {
     });
   });
 }
+
+
+  nav.classList.toggle("is-open");
+  menuToggle.classList.toggle("is-open");
+});
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", (event) => {
+    const href = anchor.getAttribute("href");
+    const target = href ? document.querySelector(href) : null;
+    if (!target) return;
+    event.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    nav.classList.remove("is-open");
+    menuToggle.classList.remove("is-open");
+  });
+});
+
+stage.addEventListener("pointermove", (event) => {
+  const rect = stage.getBoundingClientRect();
+  const x = ((event.clientX - rect.left) / rect.width - 0.5) * 16;
+  const y = ((event.clientY - rect.top) / rect.height - 0.5) * 10;
+  stage.style.setProperty("--tilt-x", `${-y}deg`);
+  stage.style.setProperty("--tilt-y", `${x}deg`);
+});
+
+stage.addEventListener("pointerleave", () => {
+  stage.style.setProperty("--tilt-x", "0deg");
+  stage.style.setProperty("--tilt-y", "0deg");
+});
+
+document.querySelectorAll("[data-open-film]").forEach((button) => {
+  button.addEventListener("click", openFilm);
+});
+
+document.querySelectorAll("[data-close-film]").forEach((button) => {
+  button.addEventListener("click", closeFilm);
+});
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !videoModal.hidden) {
+    closeFilm();
+  }
+});
+
+
+window.addEventListener("load", () => {
+  window.setTimeout(() => loader.classList.add("is-hidden"), 900);
+  buildReserveOptions();
+  renderModelTabs();
+  renderVariants();
+  renderLineup();
+  updateSelectedVariantImage();
+  wireDynamicButtons();
+  resetRotation();
+});

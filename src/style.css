@@ -1218,3 +1218,53 @@ h2 {
     font-size: clamp(2.4rem, 12vw, 3.8rem);
   }
 
+  .hero__metrics,
+  .config-preview__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__stage {
+    min-height: 980px;
+  }
+
+  .hero__stage-top {
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 0.25rem;
+  }
+
+  .stage-panel--left,
+  .stage-panel--right {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: auto;
+  }
+
+  .hero-bike {
+    inset: 22% 4% 20%;
+  }
+
+  .hero-selector {
+    inset: auto 0.9rem 0.9rem;
+  }
+
+  .hero-selector__models {
+    grid-template-columns: 1fr;
+  }
+
+  .media__card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 3rem;
+  }
+
