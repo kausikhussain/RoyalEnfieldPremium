@@ -348,3 +348,153 @@ h2 {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.hero__metrics span {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 1.36rem;
+  font-weight: 800;
+}
+
+.hero__metrics p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.hero__stage-wrap {
+  perspective: 1300px;
+}
+
+.hero__stage {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  position: relative;
+  min-height: 760px;
+  padding: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 38px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 52% 54%, rgba(255, 255, 255, 0.06), transparent 26%),
+    radial-gradient(circle at 55% 42%, rgba(255, 107, 26, 0.2), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(18px);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transition: transform 0.15s ease-out;
+}
+
+.hero__stage-glow,
+.hero__stage-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero__stage-glow {
+  inset: 18% 12% 14%;
+  background: radial-gradient(circle, rgba(255, 107, 26, 0.4) 0%, rgba(255, 107, 26, 0.08) 44%, transparent 74%);
+  filter: blur(18px);
+}
+
+.hero__stage-ring {
+  inset: 16% 14% 18%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero__stage-top {
+  position: absolute;
+  top: 1.2rem;
+  left: 50%;
+  z-index: 3;
+  display: flex;
+  gap: 0.6rem;
+  transform: translateX(-50%);
+}
+
+.stage-chip {
+  padding: 0.72rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+}
+
+.stage-panel {
+  position: absolute;
+  z-index: 3;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  background: rgba(40, 24, 17, 0.6);
+  backdrop-filter: blur(18px);
+}
+
+.stage-panel--left {
+  left: 1.2rem;
+  top: 8rem;
+  width: min(320px, 35%);
+  padding: 1.35rem;
+}
+
+.stage-panel--right {
+  right: 1.2rem;
+  top: 10.5rem;
+  width: min(240px, 28%);
+  padding: 1.2rem;
+}
+
+.stage-panel__label,
+.showcase-card__eyebrow,
+.config-block__label,
+.stage-panel__grid span,
+.lineup-card span,
+.model-tab span,
+.config-choice span {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.stage-panel--left h2 {
+  color: white;
+  max-width: 7ch;
+  font-size: clamp(2.4rem, 3vw, 3.3rem);
+}
+
+.stage-panel__tag {
+  display: inline-flex;
+  margin: 0.75rem 0 0.9rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  color: #130a05;
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+  font-weight: 800;
+}
+
+.stage-panel__copy {
+  margin: 0 0 1.1rem;
+  color: rgba(245, 237, 228, 0.74);
+}
+
+.stage-panel__grid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.stage-panel__grid strong {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 1.5rem;
+}
+
+.stage-panel__progress {
+  margin-top: 1rem;
+}
+
+.stage-panel__progress p {

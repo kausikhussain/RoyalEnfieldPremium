@@ -183,6 +183,57 @@ app.innerHTML = `
           </div>
         </div>
 
+        <div class="hero__stage-wrap reveal reveal--delay">
+          <div class="hero__stage" data-stage>
+            <div class="hero__stage-glow"></div>
+            <div class="hero__stage-ring"></div>
+
+            <div class="hero__stage-top">
+              <div class="stage-chip" data-chip-0>Twin cylinder</div>
+              <div class="stage-chip" data-chip-1>LED headlamp</div>
+              <div class="stage-chip" data-chip-2>Cafe geometry</div>
+              <div class="stage-chip" data-chip-3>Analog spirit</div>
+            </div>
+
+            <article class="stage-panel stage-panel--left">
+              <p class="stage-panel__label">Selected machine</p>
+              <h2 data-model-name>Continental GT 650</h2>
+              <span class="stage-panel__tag" data-model-category>Cafe racer</span>
+              <p class="stage-panel__copy" data-model-story>
+                Clip-ons, twin-cylinder urgency, and a low silhouette tuned to feel lean, fast, and precise.
+              </p>
+              <button class="button button--panel" type="button" data-open-film>Watch film</button>
+            </article>
+
+            <article class="stage-panel stage-panel--right">
+              <div class="stage-panel__grid">
+                <div>
+                  <span>Torque</span>
+                  <strong data-hero-torque>52.3 Nm</strong>
+                </div>
+                <div>
+                  <span>Top speed</span>
+                  <strong data-hero-speed>169 km/h</strong>
+                </div>
+              </div>
+              <div class="stage-panel__progress">
+                <p>Variant switch</p>
+                <div class="stage-panel__bar"><span data-rotation-bar></span></div>
+              </div>
+            </article>
+
+            <div class="hero-bike" data-bike-shell>
+              <img class="hero-bike__image" data-hero-image src="/media/gt-rocker-red.png" alt="Royal Enfield Continental GT 650 in Rocker Red" />
+            </div>
+
+            <div class="hero-selector">
+              <div class="hero-selector__models" data-model-tabs></div>
+              <div class="hero-selector__variants" data-variant-swatches></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
         </div>
       </section>
