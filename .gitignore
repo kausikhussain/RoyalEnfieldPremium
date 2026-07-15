@@ -3,4 +3,8 @@ dist
 *.log
 .DS_Store
 _temp_backup
-rebuild_git.py
+
+.next
+.agents
+*.webp
+*.mp4
