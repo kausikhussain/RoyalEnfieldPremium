@@ -417,6 +417,20 @@ export function MotoExperience() {
 
   const [globalStudioColor, setGlobalStudioColor] = useState(MOTORCYCLES[4].swatches[0]);
 
+  const currentModelId = useMemo(() => {
+    if (activeVideoIdx === 0) return "classic";
+    if (activeVideoIdx >= 1 && activeVideoIdx <= 10) {
+      return MOTORCYCLES[activeVideoIdx - 1].id;
+    }
+    if (activeVideoIdx === 11) return "gt";
+    return "classic";
+  }, [activeVideoIdx]);
+
+  const currentActiveModelSelectedColor = useMemo(() => {
+    if (activeVideoIdx === 11) return globalStudioColor.hex;
+    return selectedColors[currentModelId]?.hex || "#CCCCCC";
+  }, [selectedColors, currentModelId, activeVideoIdx, globalStudioColor.hex]);
+
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   // 1-to-1 Mapping of the user's 7 provided video files + CDN fallbacks for 13 Beats
@@ -670,7 +684,7 @@ export function MotoExperience() {
         </header>
 
         {/* 3D Scene View */}
-        <Scene progress={progress} color={globalStudioColor.hex} inspectMode={inspectMode} />
+        <Scene progress={progress} color={currentActiveModelSelectedColor} inspectMode={inspectMode} modelId={currentModelId} />
 
         {/* Video Background Container (1-to-1 assets) */}
         <div className="video-bg-container">

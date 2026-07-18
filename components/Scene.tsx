@@ -223,11 +223,13 @@ function EnvironmentalTransitions({ progress, spotColor }: { progress: React.Mut
 export function Scene({ 
   progress, 
   color,
-  inspectMode = false 
+  inspectMode = false,
+  modelId
 }: { 
   progress: React.MutableRefObject<number>; 
   color: string;
   inspectMode?: boolean;
+  modelId: string;
 }) {
   return (
     <div 
@@ -250,7 +252,7 @@ export function Scene({
 
         <Float speed={inspectMode ? 0 : 0.8} rotationIntensity={inspectMode ? 0 : 0.03} floatIntensity={inspectMode ? 0 : 0.08}>
           <Suspense fallback={<AssetLoader />}>
-            <BikeModel progress={progress} color={color} />
+            <BikeModel progress={progress} color={color} modelId={modelId} />
           </Suspense>
         </Float>
         
