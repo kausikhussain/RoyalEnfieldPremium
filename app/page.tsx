@@ -1,5 +1,5 @@
-import { MotoExperience } from "@/components/MotoExperience";
+import { RoyalEnfieldPremium } from "@/components/RoyalEnfieldPremium";
 
 export default function Home() {
-  return <MotoExperience />;
+  return <RoyalEnfieldPremium />;
 }
