@@ -108,14 +108,14 @@ const featuredModels: FeaturedModel[] = [
       { label: "Weight", value: "181 kg" },
     ],
     gallery: [
-      { image: "/media/super-meteor-astral-black.webp", label: "Street Contrast" },
-      { image: "/media/super-meteor-celestial-blue.webp", label: "Night Blue" },
-      { image: "/media/super-meteor-celestial-red.webp", label: "Afterglow Red" },
+      { image: "/media/hunter-350-dapper-grey.png", label: "Dapper Grey" },
+      { image: "/media/hunter-350-factory-white.png", label: "Factory White" },
+      { image: "/media/hunter-350-rebel-blue.png", label: "Rebel Blue" },
     ],
     swatches: [
-      { name: "Astral Black", hex: "#242424", image: "/media/super-meteor-astral-black.webp" },
-      { name: "Celestial Blue", hex: "#28475c", image: "/media/super-meteor-celestial-blue.webp" },
-      { name: "Celestial Red", hex: "#7d2630", image: "/media/super-meteor-celestial-red.webp" },
+      { name: "Dapper Grey", hex: "#4a4e52", image: "/media/hunter-350-dapper-grey.png" },
+      { name: "Factory White", hex: "#d8dadb", image: "/media/hunter-350-factory-white.png" },
+      { name: "Rebel Blue", hex: "#1e4d79", image: "/media/hunter-350-rebel-blue.png" },
     ],
     specGrid: [
       { label: "Engine", value: "349 cc single" },

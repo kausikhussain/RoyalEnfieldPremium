@@ -2,7 +2,7 @@
 
 import { Environment, Float, Html, PerspectiveCamera, useProgress, OrbitControls } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Suspense, useRef, useMemo } from "react";
+import { Suspense, useRef, useMemo, Component, ReactNode } from "react";
 import * as THREE from "three";
 import { BikeModel } from "./BikeModel";
 
@@ -220,6 +220,28 @@ function EnvironmentalTransitions({ progress, spotColor }: { progress: React.Mut
   );
 }
 
+class WebGLErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+  constructor(props: { children: ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: any) {
+    console.warn("WebGL Canvas context fallback triggered:", error);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return null;
+    }
+    return this.props.children;
+  }
+}
+
 export function Scene({ 
   progress, 
   color,
@@ -240,34 +262,36 @@ export function Scene({
       }} 
       aria-hidden="true"
     >
-      <Canvas
-        dpr={[1, typeof window !== "undefined" && window.innerWidth < 700 ? 1.3 : 1.8]}
-        gl={{ antialias: true, alpha: true }}
-      >
-        <EnvironmentalTransitions progress={progress} spotColor={color} />
+      <WebGLErrorBoundary>
+        <Canvas
+          dpr={[1, typeof window !== "undefined" && window.innerWidth < 700 ? 1.3 : 1.8]}
+          gl={{ antialias: true, alpha: true }}
+        >
+          <EnvironmentalTransitions progress={progress} spotColor={color} />
 
-        <CameraRig progress={progress} inspectMode={inspectMode} />
-        
-        <DustParticles count={90} />
+          <CameraRig progress={progress} inspectMode={inspectMode} />
+          
+          <DustParticles count={90} />
 
-        <Float speed={inspectMode ? 0 : 0.8} rotationIntensity={inspectMode ? 0 : 0.03} floatIntensity={inspectMode ? 0 : 0.08}>
-          <Suspense fallback={<AssetLoader />}>
-            <BikeModel progress={progress} color={color} modelId={modelId} />
-          </Suspense>
-        </Float>
-        
-        {inspectMode && (
-          <OrbitControls 
-            enableZoom={true} 
-            minDistance={1.8} 
-            maxDistance={5.2} 
-            enablePan={false} 
-            target={[0, 0.08, 0]} 
-          />
-        )}
-        
-        <Environment preset="city" />
-      </Canvas>
+          <Float speed={inspectMode ? 0 : 0.8} rotationIntensity={inspectMode ? 0 : 0.03} floatIntensity={inspectMode ? 0 : 0.08}>
+            <Suspense fallback={<AssetLoader />}>
+              <BikeModel progress={progress} color={color} modelId={modelId} />
+            </Suspense>
+          </Float>
+          
+          {inspectMode && (
+            <OrbitControls 
+              enableZoom={true} 
+              minDistance={1.8} 
+              maxDistance={5.2} 
+              enablePan={false} 
+              target={[0, 0.08, 0]} 
+            />
+          )}
+          
+          <Environment preset="city" />
+        </Canvas>
+      </WebGLErrorBoundary>
     </div>
   );
 }
