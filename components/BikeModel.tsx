@@ -156,7 +156,7 @@ function ExhaustSystem({ modelId, wheelBase }: { modelId: string; wheelBase: num
   const isCruiser = modelId === "supermeteor" || modelId === "meteor";
   const isCafeRacer = modelId === "gt";
   const isAdventure = modelId === "himalayan" || modelId === "bear";
-  const isRoadster = modelId === "hunter";
+  const isRoadster = modelId === "hunter" || modelId === "guerrilla";
   const isInterceptor = modelId === "interceptor";
 
   // 650 Twins render dual sweeping chrome exhaust pipes
@@ -314,8 +314,8 @@ export function ProceduralBike({ progress, color, modelId }: BikeProps) {
   const isCruiser = modelId === "supermeteor" || modelId === "meteor";
   const isCafeRacer = modelId === "gt";
   const isAdventure = modelId === "himalayan" || modelId === "bear";
-  const isRoadster = modelId === "hunter";
-  const isAlloyWheels = modelId === "hunter" || modelId === "shotgun";
+  const isRoadster = modelId === "hunter" || modelId === "guerrilla";
+  const isAlloyWheels = modelId === "hunter" || modelId === "shotgun" || modelId === "guerrilla";
   const isInterceptor = modelId === "interceptor";
 
   // Detailed Stance configurations

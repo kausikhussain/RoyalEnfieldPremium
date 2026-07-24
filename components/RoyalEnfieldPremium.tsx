@@ -16,7 +16,7 @@ type Swatch = {
 };
 
 type FeaturedModel = {
-  id: "gt" | "hunter" | "supermeteor" | "himalayan";
+  id: "classic" | "bullet" | "hunter" | "meteor" | "guerrilla" | "himalayan" | "gt" | "interceptor" | "supermeteor" | "shotgun" | "bear";
   name: string;
   family: string;
   video: string;
@@ -40,52 +40,100 @@ type FeaturedModel = {
 
 const featuredModels: FeaturedModel[] = [
   {
-    id: "gt",
-    name: "Continental GT 650",
-    family: "Road Rebellion",
-    video: "/media/gt-650.mp4",
-    accent: "#c76b3a",
-    eyebrow: "Cafe Racer Chapter",
-    statement: "Low bars. Long tank. A silhouette built to move like a late-night promise.",
+    id: "classic",
+    name: "Classic 350",
+    family: "Timeless Heritage",
+    video: "/media/entrance-video.mp4",
+    accent: "#c5a059",
+    eyebrow: "Heritage Chapter",
+    statement: "Post-war elegance. Signature teardrop tank. The motorcycle that defined generations.",
     story:
-      "This chapter leans into compressed framing, racing warmth, and a more predatory stance so the machine feels like the hero of a premium short film rather than a product tile.",
+      "The Classic chapter opens with warm nostalgia and refined simplicity. Every curve traces Royal Enfield's longest-running design DNA, giving the site its emotional anchor.",
     engineering: [
-      "Parallel-twin performance with a taut cafe racer stance",
-      "Clip-on bars and sculpted tank proportions for a committed riding posture",
-      "A visual language shaped by brushed metal, racing red, and deep enamel paint",
+      "Signature teardrop fuel tank with hand-painted gold pinstripes",
+      "Refined J-platform single-cylinder engine with modern fuel injection",
+      "Traditional twin-downtube steel frame with classic sprung saddle",
     ],
     stats: [
-      { label: "Power", value: "47 HP" },
-      { label: "Torque", value: "52.3 Nm" },
-      { label: "Weight", value: "214 kg" },
+      { label: "Power", value: "20.2 HP" },
+      { label: "Torque", value: "27 Nm" },
+      { label: "Weight", value: "195 kg" },
     ],
     gallery: [
-      { image: "/media/gt-rocker-red.png", label: "Rocker Red" },
-      { image: "/media/gt-british-racing-green.png", label: "British Racing Green" },
-      { image: "/media/gt-slipstream-blue.png", label: "Slipstream Blue" },
+      { image: "/media/gt-british-racing-green.png", label: "Chrome Bronze" },
+      { image: "/media/himalayan-hanle-black.webp", label: "Halcyon Black" },
+      { image: "/media/himalayan-kaza-brown.webp", label: "Marsh Grey" },
     ],
     swatches: [
-      { name: "Rocker Red", hex: "#8d1c1f", image: "/media/gt-rocker-red.png" },
-      { name: "British Racing Green", hex: "#183227", image: "/media/gt-british-racing-green.png" },
-      { name: "Slipstream Blue", hex: "#274f69", image: "/media/gt-slipstream-blue.png" },
+      { name: "Chrome Bronze", hex: "#c5a059", image: "/media/gt-british-racing-green.png" },
+      { name: "Halcyon Black", hex: "#1d1c1a", image: "/media/himalayan-hanle-black.webp" },
+      { name: "Marsh Grey", hex: "#70736e", image: "/media/himalayan-kaza-brown.webp" },
     ],
     specGrid: [
-      { label: "Engine", value: "648 cc twin" },
-      { label: "Top Form", value: "Cafe racer ergonomics" },
-      { label: "Fuel Tank", value: "12.5 L sculpted tank" },
-      { label: "Brakes", value: "ABS disc setup" },
+      { label: "Engine", value: "349 cc single" },
+      { label: "Form Factor", value: "Vintage touring" },
+      { label: "Fuel Tank", value: "13 L teardrop" },
+      { label: "Brakes", value: "Disc + drum" },
     ],
     features: [
-      { title: "Night Geometry", body: "A low clip-on silhouette sharpened for aggressive urban runs." },
-      { title: "Twin Character", body: "Strong mid-range pull delivered with unmistakable Royal Enfield texture." },
-      { title: "Paint Drama", body: "Deep metallic finishes designed to hold highlights like enamel under studio light." },
+      { title: "Vintage Soul", body: "Classic silhouette with deeply chromed accents that catch light like jewellery." },
+      { title: "Smooth Refinement", body: "Modern J-platform delivers a cleaner, vibration-free ride without losing character." },
+      { title: "Heritage Palette", body: "Hand-painted tanks with chrome and gold finishes that honour tradition." },
     ],
-    soundtrack: "Twin-cylinder pulse, tight and mechanical.",
-    heritage: "A cafe racer line that channels Royal Enfield's road racing memory into a modern twin.",
-    rideStyle: "Committed, focused, fast over short bursts.",
-    bestUse: "Weekend canyon runs, city night rides, and expressive solo riding.",
-    accessories: ["Bar-end mirrors", "Single seat cowl", "Touring screen"],
-    cta: "Configure the racer",
+    soundtrack: "Single-cylinder thump with a deep, unhurried cadence.",
+    heritage: "The longest continually produced motorcycle in history, embodying Royal Enfield since 1901.",
+    rideStyle: "Relaxed, upright, cruising at a measured pace.",
+    bestUse: "Weekend heritage rides, relaxed touring, and proud daily commuting.",
+    accessories: ["Chrome mirrors", "Touring rack", "Canvas panniers"],
+    cta: "Configure the classic",
+  },
+  {
+    id: "bullet",
+    name: "Bullet 350",
+    family: "Iron Legacy",
+    video: "/media/cinematic-gt650.mp4",
+    accent: "#b68b40",
+    eyebrow: "Legacy Chapter",
+    statement: "The original iron heartbeat. Hand-painted pinstripes. A machine that has earned its own mythology.",
+    story:
+      "The Bullet chapter carries the heaviest emotional weight. It is not just a motorcycle section but a tribute to the machine that built Royal Enfield's entire identity.",
+    engineering: [
+      "Cast-iron engine block with signature long-stroke character",
+      "Hand-painted gold pinstripes on every tank, applied by master craftsmen",
+      "Single-downtube frame geometry unchanged in spirit for decades",
+    ],
+    stats: [
+      { label: "Power", value: "20.2 HP" },
+      { label: "Torque", value: "27 Nm" },
+      { label: "Weight", value: "191 kg" },
+    ],
+    gallery: [
+      { image: "/media/himalayan-hanle-black.webp", label: "Standard Black" },
+      { image: "/media/gt-rocker-red.png", label: "Military Red" },
+      { image: "/media/gt-slipstream-blue.png", label: "Black Gold" },
+    ],
+    swatches: [
+      { name: "Standard Black", hex: "#0b0b0b", image: "/media/himalayan-hanle-black.webp" },
+      { name: "Military Red", hex: "#a01825", image: "/media/gt-rocker-red.png" },
+      { name: "Black Gold", hex: "#b68b40", image: "/media/gt-slipstream-blue.png" },
+    ],
+    specGrid: [
+      { label: "Engine", value: "349 cc single" },
+      { label: "Legacy", value: "Since 1932" },
+      { label: "Fuel Tank", value: "13.5 L" },
+      { label: "Character", value: "Mechanical soul" },
+    ],
+    features: [
+      { title: "Iron Pulse", body: "The longest-running production motorcycle rhythm — unchanged, unforgettable." },
+      { title: "Pinstripe Craft", body: "Each gold line is hand-painted, making every Bullet uniquely finished." },
+      { title: "Road Mythology", body: "From Indian highways to global rallies, the Bullet built its own legend." },
+    ],
+    soundtrack: "Deep cast-iron thump, slow and deliberate.",
+    heritage: "The longest-running production motorcycle in history. Every Bullet carries 90 years of mechanical soul.",
+    rideStyle: "Upright, heavy, deliberate, and deeply satisfying.",
+    bestUse: "Long-distance touring, parade rides, and heritage ownership.",
+    accessories: ["Pillion backrest", "Chrome engine guards", "Classic tool roll"],
+    cta: "Own the legend",
   },
   {
     id: "hunter",
@@ -136,12 +184,252 @@ const featuredModels: FeaturedModel[] = [
     cta: "Build the street setup",
   },
   {
+    id: "meteor",
+    name: "Meteor 350",
+    family: "Easy Cruiser",
+    video: "/media/entrance-video.mp4",
+    accent: "#d67b52",
+    eyebrow: "Cruiser Chapter",
+    statement: "Feet forward. Eyes ahead. A laid-back cruiser built for sunset highways and open weekends.",
+    story:
+      "The Meteor chapter introduces a warmer, slower rhythm. It brings cruise control to the scroll pace, giving visitors a moment to relax inside the experience.",
+    engineering: [
+      "Forward-set footpegs and low saddle for relaxed cruiser ergonomics",
+      "J-platform single-cylinder engine tuned for low-rpm highway comfort",
+      "Rounded design language with integrated Tripper navigation pod",
+    ],
+    stats: [
+      { label: "Power", value: "20.2 HP" },
+      { label: "Torque", value: "27 Nm" },
+      { label: "Weight", value: "191 kg" },
+    ],
+    gallery: [
+      { image: "/media/gt-rocker-red.png", label: "Fireball Red" },
+      { image: "/media/super-meteor-celestial-blue.webp", label: "Stellar Blue" },
+      { image: "/media/super-meteor-celestial-red.webp", label: "Supernova Bronze" },
+    ],
+    swatches: [
+      { name: "Fireball Red", hex: "#b01a25", image: "/media/gt-rocker-red.png" },
+      { name: "Stellar Blue", hex: "#1b3855", image: "/media/super-meteor-celestial-blue.webp" },
+      { name: "Supernova Bronze", hex: "#9e7b56", image: "/media/super-meteor-celestial-red.webp" },
+    ],
+    specGrid: [
+      { label: "Engine", value: "349 cc single" },
+      { label: "Cruise Bias", value: "Relaxed highway" },
+      { label: "Navigation", value: "Tripper turn-by-turn" },
+      { label: "Seat Height", value: "765 mm low saddle" },
+    ],
+    features: [
+      { title: "Sunset Stance", body: "Low and forward geometry that feels natural on open roads." },
+      { title: "Tripper Navigation", body: "Built-in turn-by-turn pod keeps the cruiser experience uninterrupted." },
+      { title: "Comfort First", body: "Every surface is tuned for relaxed weekend highway cruising." },
+    ],
+    soundtrack: "Smooth single-cylinder hum tuned for highway cadence.",
+    heritage: "Royal Enfield's entry into modern cruiser design, blending approachability with genuine touring DNA.",
+    rideStyle: "Feet-forward, relaxed, comfortable, and unhurried.",
+    bestUse: "Weekend highway cruising, sunset rides, and comfortable touring.",
+    accessories: ["Touring windshield", "Leather saddlebags", "Highway pegs"],
+    cta: "Plan the cruise",
+  },
+  {
+    id: "guerrilla",
+    name: "Guerrilla 450",
+    family: "Street Fighter",
+    video: "/media/gt-650-clip2.mp4",
+    accent: "#e85d3a",
+    eyebrow: "Streetfighter Chapter",
+    statement: "Raw aggression. Flat bars. A street-ready machine built to dominate urban tarmac.",
+    story:
+      "The Guerrilla chapter injects an adrenaline spike into the journey. It shifts the entire mood to something sharper, faster, and more confrontational.",
+    engineering: [
+      "Sherpa 450 liquid-cooled engine in a stripped-down street chassis",
+      "Flat tracker handlebars and aggressive forward-leaning geometry",
+      "Minimalist bodywork with exposed mechanical architecture",
+    ],
+    stats: [
+      { label: "Power", value: "39.47 HP" },
+      { label: "Torque", value: "36.5 Nm" },
+      { label: "Weight", value: "185 kg" },
+    ],
+    gallery: [
+      { image: "/media/super-meteor-astral-black.webp", label: "Playa Black" },
+      { image: "/media/hunter-350-rebel-blue.png", label: "Baja Blue" },
+      { image: "/media/gt-slipstream-blue.png", label: "Smoke Silver" },
+    ],
+    swatches: [
+      { name: "Playa Black", hex: "#1a1a1a", image: "/media/super-meteor-astral-black.webp" },
+      { name: "Baja Blue", hex: "#1e4d79", image: "/media/hunter-350-rebel-blue.png" },
+      { name: "Smoke Silver", hex: "#8a8a8a", image: "/media/gt-slipstream-blue.png" },
+    ],
+    specGrid: [
+      { label: "Engine", value: "452 cc liquid-cooled" },
+      { label: "Form Factor", value: "Street tracker" },
+      { label: "Suspension", value: "USD forks, monoshock" },
+      { label: "Focus", value: "Urban aggression" },
+    ],
+    features: [
+      { title: "Street Aggression", body: "Flat bars and minimal bodywork create an unfiltered riding experience." },
+      { title: "Liquid Power", body: "Sherpa 450 engine delivers punchy acceleration through city blocks." },
+      { title: "Stripped Identity", body: "Less decoration, more intention — every surface is functional." },
+    ],
+    soundtrack: "Liquid-cooled urgency with a sharp, modern edge.",
+    heritage: "A new chapter in Royal Enfield's evolution — purpose-built for riders who want raw street performance.",
+    rideStyle: "Aggressive, forward, sharp, and responsive.",
+    bestUse: "Urban street riding, weekend scratching, and spirited commuting.",
+    accessories: ["Knuckle guards", "Tail tidy kit", "Flat track seat"],
+    cta: "Unleash the fighter",
+  },
+  {
+    id: "himalayan",
+    name: "Himalayan 450",
+    family: "Altitude Engineered",
+    video: "/media/himalayan-450.mp4",
+    accent: "#7d8671",
+    eyebrow: "Adventure Chapter",
+    statement: "Higher bars, longer travel, and an expedition stance shaped for edges that maps do not finish.",
+    story:
+      "The Himalayan chapter shifts into cooler atmosphere, trail imagery, and more open spacing so the site closes on aspiration instead of specification.",
+    engineering: [
+      "Sherpa 450 performance in a proportioned adventure chassis",
+      "Long-travel suspension and a more vertical visual stance",
+      "A slower more cinematic reveal tuned for terrain and endurance",
+    ],
+    stats: [
+      { label: "Power", value: "40.02 HP" },
+      { label: "Torque", value: "40 Nm" },
+      { label: "Weight", value: "196 kg" },
+    ],
+    gallery: [
+      { image: "/media/himalayan-hanle-black.webp", label: "Hanle Black" },
+      { image: "/media/himalayan-kamet-white.webp", label: "Kamet White" },
+      { image: "/media/himalayan-kaza-brown.webp", label: "Kaza Brown" },
+    ],
+    swatches: [
+      { name: "Hanle Black", hex: "#232220", image: "/media/himalayan-hanle-black.webp" },
+      { name: "Kamet White", hex: "#d2d1cd", image: "/media/himalayan-kamet-white.webp" },
+      { name: "Kaza Brown", hex: "#a89380", image: "/media/himalayan-kaza-brown.webp" },
+    ],
+    specGrid: [
+      { label: "Engine", value: "452 cc liquid-cooled" },
+      { label: "Suspension", value: "Long-travel adventure setup" },
+      { label: "Navigation", value: "Expedition-ready cockpit" },
+      { label: "Focus", value: "Altitude and endurance" },
+    ],
+    features: [
+      { title: "Trail Authority", body: "A more upright architecture communicates confidence over distance." },
+      { title: "Atmospheric Shift", body: "Cooler light and mountain fog create the strongest tonal change in the journey." },
+      { title: "Adventure Promise", body: "Less about showroom polish, more about the emotional pull of departure." },
+    ],
+    soundtrack: "Sherpa 450 urgency with expedition calm.",
+    heritage: "Built from Royal Enfield's Himalayan exploration lineage and sharpened for the new 450 platform.",
+    rideStyle: "Tall, composed, exploratory, and terrain-ready.",
+    bestUse: "Mountain roads, long expeditions, mixed terrain, and unknown routes.",
+    accessories: ["Adventure panniers", "Rally protection", "Auxiliary lamps"],
+    cta: "Plan the expedition",
+  },
+  {
+    id: "gt",
+    name: "Continental GT 650",
+    family: "Road Rebellion",
+    video: "/media/gt-650.mp4",
+    accent: "#c76b3a",
+    eyebrow: "Cafe Racer Chapter",
+    statement: "Low bars. Long tank. A silhouette built to move like a late-night promise.",
+    story:
+      "This chapter leans into compressed framing, racing warmth, and a more predatory stance so the machine feels like the hero of a premium short film rather than a product tile.",
+    engineering: [
+      "Parallel-twin performance with a taut cafe racer stance",
+      "Clip-on bars and sculpted tank proportions for a committed riding posture",
+      "A visual language shaped by brushed metal, racing red, and deep enamel paint",
+    ],
+    stats: [
+      { label: "Power", value: "47 HP" },
+      { label: "Torque", value: "52.3 Nm" },
+      { label: "Weight", value: "214 kg" },
+    ],
+    gallery: [
+      { image: "/media/gt-rocker-red.png", label: "Rocker Red" },
+      { image: "/media/gt-british-racing-green.png", label: "British Racing Green" },
+      { image: "/media/gt-slipstream-blue.png", label: "Slipstream Blue" },
+    ],
+    swatches: [
+      { name: "Rocker Red", hex: "#8d1c1f", image: "/media/gt-rocker-red.png" },
+      { name: "British Racing Green", hex: "#183227", image: "/media/gt-british-racing-green.png" },
+      { name: "Slipstream Blue", hex: "#274f69", image: "/media/gt-slipstream-blue.png" },
+    ],
+    specGrid: [
+      { label: "Engine", value: "648 cc twin" },
+      { label: "Top Form", value: "Cafe racer ergonomics" },
+      { label: "Fuel Tank", value: "12.5 L sculpted tank" },
+      { label: "Brakes", value: "ABS disc setup" },
+    ],
+    features: [
+      { title: "Night Geometry", body: "A low clip-on silhouette sharpened for aggressive urban runs." },
+      { title: "Twin Character", body: "Strong mid-range pull delivered with unmistakable Royal Enfield texture." },
+      { title: "Paint Drama", body: "Deep metallic finishes designed to hold highlights like enamel under studio light." },
+    ],
+    soundtrack: "Twin-cylinder pulse, tight and mechanical.",
+    heritage: "A cafe racer line that channels Royal Enfield's road racing memory into a modern twin.",
+    rideStyle: "Committed, focused, fast over short bursts.",
+    bestUse: "Weekend canyon runs, city night rides, and expressive solo riding.",
+    accessories: ["Bar-end mirrors", "Single seat cowl", "Touring screen"],
+    cta: "Configure the racer",
+  },
+  {
+    id: "interceptor",
+    name: "Interceptor 650",
+    family: "Classic Roadster",
+    video: "/media/cinematic-gt650.mp4",
+    accent: "#7e1f27",
+    eyebrow: "Roadster Chapter",
+    statement: "High bars. Flat saddle. The twin that brings beach-culture cool to every road it touches.",
+    story:
+      "The Interceptor chapter radiates warmth and approachability. It is the most inviting section of the journey — broad, open, and confident without being intimidating.",
+    engineering: [
+      "Classic high-bar roadster geometry inspired by 1960s beach culture",
+      "Parallel-twin 648cc engine with dual chrome exhaust canisters",
+      "Wide flat saddle and upright posture for all-day comfort",
+    ],
+    stats: [
+      { label: "Power", value: "47 HP" },
+      { label: "Torque", value: "52.3 Nm" },
+      { label: "Weight", value: "202 kg" },
+    ],
+    gallery: [
+      { image: "/media/gt-rocker-red.png", label: "Canyon Red" },
+      { image: "/media/super-meteor-astral-black.webp", label: "Sunset Strip" },
+      { image: "/media/super-meteor-celestial-blue.webp", label: "Barcelona Blue" },
+    ],
+    swatches: [
+      { name: "Canyon Red", hex: "#b82a2e", image: "/media/gt-rocker-red.png" },
+      { name: "Sunset Strip", hex: "#121212", image: "/media/super-meteor-astral-black.webp" },
+      { name: "Barcelona Blue", hex: "#2a4d6c", image: "/media/super-meteor-celestial-blue.webp" },
+    ],
+    specGrid: [
+      { label: "Engine", value: "648 cc twin" },
+      { label: "Style", value: "Classic roadster" },
+      { label: "Exhaust", value: "Dual chrome canisters" },
+      { label: "Comfort", value: "All-day saddle geometry" },
+    ],
+    features: [
+      { title: "Beach Culture", body: "1960s California cool translated into modern twin-cylinder confidence." },
+      { title: "Dual Chrome", body: "Twin upswept exhaust canisters that define the Interceptor's visual signature." },
+      { title: "Open Invitation", body: "The most approachable 650 — wide bars, flat saddle, and instant confidence." },
+    ],
+    soundtrack: "Twin-cylinder warmth with a laid-back exhaust note.",
+    heritage: "Inspired by the original 1960s Interceptor — Royal Enfield's most culturally iconic roadster.",
+    rideStyle: "Upright, open, confident, and deeply comfortable.",
+    bestUse: "Relaxed touring, Sunday rides, and all-day saddle comfort.",
+    accessories: ["Chrome engine guards", "Touring seat", "Bar-end mirrors"],
+    cta: "Build the roadster",
+  },
+  {
     id: "supermeteor",
     name: "Super Meteor 650",
     family: "Grand Horizon",
     video: "/media/super-meteor-650.mp4",
     accent: "#8f5c40",
-    eyebrow: "Cruiser Chapter",
+    eyebrow: "Grand Cruiser Chapter",
     statement: "Heavy chrome, calmer cadence, and a long-road attitude that feels composed at every frame.",
     story:
       "This chapter opens the composition and slows the storytelling down. It feels expensive because it allows the bike, the chrome, and the horizon to breathe.",
@@ -184,52 +472,100 @@ const featuredModels: FeaturedModel[] = [
     cta: "Prepare the cruiser",
   },
   {
-    id: "himalayan",
-    name: "Himalayan 450",
-    family: "Altitude Engineered",
-    video: "/media/himalayan-450.mp4",
-    accent: "#7d8671",
-    eyebrow: "Adventure Chapter",
-    statement: "Higher bars, longer travel, and an expedition stance shaped for edges that maps do not finish.",
+    id: "shotgun",
+    name: "Shotgun 650",
+    family: "Modern Bobber",
+    video: "/media/gt-650-clip2.mp4",
+    accent: "#4e4e4e",
+    eyebrow: "Bobber Chapter",
+    statement: "Chopped lines. Single saddle. A retro-futuristic bobber that rewrites convention.",
     story:
-      "The final major chapter shifts into cooler atmosphere, trail imagery, and more open spacing so the site closes on aspiration instead of specification.",
+      "The Shotgun chapter breaks the pattern. It introduces a rawer, more rebellious visual language — stripped back, deliberately unfinished, and unapologetically bold.",
     engineering: [
-      "Sherpa 450 performance in a proportioned adventure chassis",
-      "Long-travel suspension and a more vertical visual stance",
-      "A slower more cinematic reveal tuned for terrain and endurance",
+      "Single-saddle floating setup with custom bobber proportions",
+      "Parallel-twin 648cc engine in a blacked-out modular chassis",
+      "Flat city bars and minimalist instrumentation for stripped identity",
     ],
     stats: [
-      { label: "Power", value: "40.02 HP" },
-      { label: "Torque", value: "40 Nm" },
-      { label: "Weight", value: "196 kg" },
+      { label: "Power", value: "47 HP" },
+      { label: "Torque", value: "52.3 Nm" },
+      { label: "Weight", value: "240 kg" },
     ],
     gallery: [
-      { image: "/media/himalayan-hanle-black.webp", label: "Hanle Black" },
-      { image: "/media/himalayan-kamet-white.webp", label: "Kamet White" },
-      { image: "/media/himalayan-kaza-brown.webp", label: "Kaza Brown" },
+      { image: "/media/super-meteor-astral-black.webp", label: "Sheet Metal Grey" },
+      { image: "/media/super-meteor-celestial-blue.webp", label: "Plasma Blue" },
+      { image: "/media/gt-british-racing-green.png", label: "Drill Green" },
     ],
     swatches: [
-      { name: "Hanle Black", hex: "#232220", image: "/media/himalayan-hanle-black.webp" },
-      { name: "Kamet White", hex: "#d2d1cd", image: "/media/himalayan-kamet-white.webp" },
-      { name: "Kaza Brown", hex: "#a89380", image: "/media/himalayan-kaza-brown.webp" },
+      { name: "Sheet Metal Grey", hex: "#6c7073", image: "/media/super-meteor-astral-black.webp" },
+      { name: "Plasma Blue", hex: "#18324f", image: "/media/super-meteor-celestial-blue.webp" },
+      { name: "Drill Green", hex: "#243026", image: "/media/gt-british-racing-green.png" },
     ],
     specGrid: [
-      { label: "Engine", value: "452 cc liquid-cooled" },
-      { label: "Suspension", value: "Long-travel adventure setup" },
-      { label: "Navigation", value: "Expedition-ready cockpit" },
-      { label: "Focus", value: "Altitude and endurance" },
+      { label: "Engine", value: "648 cc twin" },
+      { label: "Form Factor", value: "Modern bobber" },
+      { label: "Bars", value: "Flat city bars" },
+      { label: "Character", value: "Stripped rebellion" },
     ],
     features: [
-      { title: "Trail Authority", body: "A more upright architecture communicates confidence over distance." },
-      { title: "Atmospheric Shift", body: "Cooler light and mountain fog create the strongest tonal change in the journey." },
-      { title: "Adventure Promise", body: "Less about showroom polish, more about the emotional pull of departure." },
+      { title: "Chopped Identity", body: "Minimalist bodywork strips away everything except mechanical intent." },
+      { title: "Bobber Stance", body: "Single saddle and shortened rear create an unmistakable silhouette." },
+      { title: "Dark Palette", body: "Blacked-out finishes and industrial textures define the visual rebellion." },
     ],
-    soundtrack: "Sherpa 450 urgency with expedition calm.",
-    heritage: "Built from Royal Enfield's Himalayan exploration lineage and sharpened for the new 450 platform.",
-    rideStyle: "Tall, composed, exploratory, and terrain-ready.",
-    bestUse: "Mountain roads, long expeditions, mixed terrain, and unknown routes.",
-    accessories: ["Adventure panniers", "Rally protection", "Auxiliary lamps"],
-    cta: "Plan the expedition",
+    soundtrack: "Twin-cylinder growl through a blacked-out exhaust.",
+    heritage: "Royal Enfield's boldest departure — a bobber that respects tradition by deliberately breaking from it.",
+    rideStyle: "Aggressive, solo, stripped, and statement-making.",
+    bestUse: "City cruising, custom culture events, and solo statement rides.",
+    accessories: ["Bar-end mirrors", "Rear rack", "Blacked-out engine covers"],
+    cta: "Strip it back",
+  },
+  {
+    id: "bear",
+    name: "Bear 650",
+    family: "Trail Scrambler",
+    video: "/media/gt-650-clip2.mp4",
+    accent: "#6d5f52",
+    eyebrow: "Scrambler Chapter",
+    statement: "Raised exhausts. Knobby tyres. A scrambler that carries twin-cylinder confidence off the tarmac.",
+    story:
+      "The Bear chapter closes the 650 family with something unexpected — a scrambler that brings trail energy and outdoor texture into the digital showroom.",
+    engineering: [
+      "Raised exhaust routing for improved ground clearance on trails",
+      "Dual-purpose tyre fitment bridging road comfort and light off-road",
+      "Upright scrambler geometry with protective chassis elements",
+    ],
+    stats: [
+      { label: "Power", value: "47 HP" },
+      { label: "Torque", value: "56.5 Nm" },
+      { label: "Weight", value: "216 kg" },
+    ],
+    gallery: [
+      { image: "/media/himalayan-kamet-white.webp", label: "Boardwalk White" },
+      { image: "/media/himalayan-kaza-brown.webp", label: "Golden Shadow" },
+      { image: "/media/himalayan-hanle-black.webp", label: "Petrol Green" },
+    ],
+    swatches: [
+      { name: "Boardwalk White", hex: "#ecece8", image: "/media/himalayan-kamet-white.webp" },
+      { name: "Golden Shadow", hex: "#87745e", image: "/media/himalayan-kaza-brown.webp" },
+      { name: "Petrol Green", hex: "#152c28", image: "/media/himalayan-hanle-black.webp" },
+    ],
+    specGrid: [
+      { label: "Engine", value: "648 cc twin" },
+      { label: "Suspension", value: "Long-travel dual-purpose" },
+      { label: "Exhaust", value: "High-mounted scrambler" },
+      { label: "Focus", value: "Road-to-trail versatility" },
+    ],
+    features: [
+      { title: "Trail Ready", body: "Raised exhaust and protective elements bring genuine off-road capability." },
+      { title: "Twin Torque", body: "Enhanced low-end torque makes trail riding confident and controllable." },
+      { title: "Outdoor Texture", body: "Earthy tones and rugged surfaces bring nature into the showroom." },
+    ],
+    soundtrack: "Twin-cylinder rumble with an outdoor, earthy resonance.",
+    heritage: "Royal Enfield's scrambler tradition — bringing the 650 twin into dirt-ready territory.",
+    rideStyle: "Upright, adventurous, versatile, and trail-capable.",
+    bestUse: "Light off-road trails, beach rides, and weekend adventure exploring.",
+    accessories: ["Knuckle guards", "Skid plate", "Canvas saddlebags"],
+    cta: "Build the scrambler",
   },
 ];
 
@@ -411,7 +747,7 @@ export function RoyalEnfieldPremium() {
   const { play } = useEngineAudio();
   const [navSolid, setNavSolid] = useState(false);
   const [experienceReady, setExperienceReady] = useState(false);
-  const [activeModelId, setActiveModelId] = useState<FeaturedModel["id"]>("gt");
+  const [activeModelId, setActiveModelId] = useState<FeaturedModel["id"]>("classic");
   const [activeVideo, setActiveVideo] = useState("hero");
   const [isSwitchingModel, setIsSwitchingModel] = useState(false);
   const [activeSwatches, setActiveSwatches] = useState<Record<string, Swatch>>(() =>
@@ -484,6 +820,11 @@ export function RoyalEnfieldPremium() {
       }
     });
   }, [activeVideo]);
+
+  const activeModelIdRef = useRef(activeModelId);
+  useEffect(() => {
+    activeModelIdRef.current = activeModelId;
+  }, [activeModelId]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -579,14 +920,14 @@ export function RoyalEnfieldPremium() {
           trigger: footerSection,
           start: "top center",
           end: "bottom bottom",
-          onEnter: () => setActiveVideo(activeModelId),
-          onEnterBack: () => setActiveVideo(activeModelId),
+          onEnter: () => setActiveVideo(activeModelIdRef.current),
+          onEnterBack: () => setActiveVideo(activeModelIdRef.current),
         });
       }
     });
 
     return () => ctx.revert();
-  }, [activeModelId]);
+  }, [experienceReady]);
 
   return (
     <SmoothScrollProvider>
@@ -878,7 +1219,7 @@ export function RoyalEnfieldPremium() {
                       setActiveVideo(model.id);
                     }}
                   >
-                    <span className="re-selector-index">0{featuredModels.indexOf(model) + 1}</span>
+                    <span className="re-selector-index">{(featuredModels.indexOf(model) + 1).toString().padStart(2, "0")}</span>
                     <span className="re-selector-thumb">
                       <img src={model.gallery[0].image} alt="" />
                       <video src={model.video} autoPlay muted loop playsInline preload="metadata" />
