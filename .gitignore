@@ -1,10 +1,7 @@
 node_modules
+.next
 dist
 *.log
 .DS_Store
 _temp_backup
-
-.next
 .agents
-*.webp
-*.mp4
