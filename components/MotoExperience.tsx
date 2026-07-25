@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SmoothScrollProvider } from "./SmoothScrollProvider";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
+import { getAssetPath } from "@/utils/assetPath";
 import { RevealTitle, Section, Stat } from "./sections";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -176,7 +177,7 @@ const MOTORCYCLES = [
     id: "classic",
     name: "Classic 350",
     description: "Post-war vintage styling meets refined road kinetics. signature teardrop tank, curved mudguards, and the legendary single-cylinder thrum.",
-    localVideo: "/media/classic-350.mp4",
+    localVideo: "/media/entrance-video.mp4",
     cdnVideo: "https://assets.mixkit.co/videos/preview/mixkit-vintage-motorcycle-on-a-countryside-road-43033-large.mp4",
     color: "#C5A059",
     specs: { power: "20.2 HP", torque: "27 Nm", weight: "195 kg" },
@@ -190,7 +191,7 @@ const MOTORCYCLES = [
     id: "bullet",
     name: "Bullet 350",
     description: "The longest-running production motorcycle in history. Hand-painted gold pinstripes, heavy cast engine cases, and the timeless mechanical soul since 1932.",
-    localVideo: "/media/bullet-350.mp4",
+    localVideo: "/media/cinematic-gt650.mp4",
     cdnVideo: "https://assets.mixkit.co/videos/preview/mixkit-motorcyclist-riding-on-a-road-in-the-mountains-43026-large.mp4",
     color: "#B68B40",
     specs: { power: "20.2 HP", torque: "27 Nm", weight: "191 kg" },
@@ -218,7 +219,7 @@ const MOTORCYCLES = [
     id: "meteor",
     name: "Meteor 350",
     description: "Laid-back highway cruiser design. Forward cruiser controls, low saddle clearances, and relaxed cruising kinetics built for endless tarmac.",
-    localVideo: "/media/meteor-350.mp4",
+    localVideo: "/media/entrance-video.mp4",
     cdnVideo: "https://assets.mixkit.co/videos/preview/mixkit-motorcycle-riding-at-sunset-41984-large.mp4",
     color: "#D67B52",
     specs: { power: "20.2 HP", torque: "27 Nm", weight: "191 kg" },
@@ -288,7 +289,7 @@ const MOTORCYCLES = [
     id: "bear",
     name: "Bear 650",
     description: "Scrambler trails tracker chassis. Raised exhausts, heavy travel coil shocks, and dual off-road blocks.",
-    localVideo: "/media/bear-650.mp4",
+    localVideo: "/media/gt-650-clip2.mp4",
     cdnVideo: "https://assets.mixkit.co/videos/preview/mixkit-motorcycle-driving-fast-on-a-dirt-road-41712-large.mp4",
     color: "#6D5F52",
     specs: { power: "47 HP", torque: "56.5 Nm", weight: "216 kg" },
@@ -433,21 +434,21 @@ export function MotoExperience() {
 
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  // 1-to-1 Mapping of the user's 7 provided video files + CDN fallbacks for 13 Beats
+  // 1-to-1 Mapping of the user's provided video files with asset path resolution
   const videoSrcList = useMemo(() => [
-    "/media/entrance-video.mp4",       // 0. Hero Showroom
-    "/media/classic-350.mp4",          // 1. Classic 350
-    "/media/bullet-350.mp4",           // 2. Bullet 350
-    "/media/hunter-350.mp4",           // 3. Hunter 350
-    "/media/meteor-350.mp4",           // 4. Meteor 350
-    "/media/gt-650.mp4",               // 5. Continental GT 650
-    "/media/cinematic-gt650.mp4",       // 6. Interceptor 650
-    "/media/super-meteor-650.mp4",     // 7. Super Meteor 650
-    "/media/gt-650-clip2.mp4",         // 8. Shotgun 650
-    "/media/bear-650.mp4",             // 9. Bear 650
-    "/media/himalayan-450.mp4",         // 10. Himalayan 450
-    "/media/entrance-video.mp4",       // 11. Configurator Studio
-    "/media/cinematic-gt650.mp4"       // 12. Outro Booking
+    getAssetPath("/media/entrance-video.mp4"),       // 0. Hero Showroom
+    getAssetPath("/media/entrance-video.mp4"),       // 1. Classic 350
+    getAssetPath("/media/cinematic-gt650.mp4"),       // 2. Bullet 350
+    getAssetPath("/media/hunter-350.mp4"),           // 3. Hunter 350
+    getAssetPath("/media/entrance-video.mp4"),       // 4. Meteor 350
+    getAssetPath("/media/gt-650.mp4"),               // 5. Continental GT 650
+    getAssetPath("/media/cinematic-gt650.mp4"),       // 6. Interceptor 650
+    getAssetPath("/media/super-meteor-650.mp4"),     // 7. Super Meteor 650
+    getAssetPath("/media/gt-650-clip2.mp4"),         // 8. Shotgun 650
+    getAssetPath("/media/gt-650-clip2.mp4"),         // 9. Bear 650
+    getAssetPath("/media/himalayan-450.mp4"),         // 10. Himalayan 450
+    getAssetPath("/media/entrance-video.mp4"),       // 11. Configurator Studio
+    getAssetPath("/media/cinematic-gt650.mp4")       // 12. Outro Booking
   ], []);
 
   // Update dynamic fallback urls if local video file load triggers 404
@@ -694,10 +695,11 @@ export function MotoExperience() {
               ref={(el) => {
                 videoRefs.current[idx] = el;
               }}
-              src={src}
+              src={getAssetPath(src)}
               loop
               muted
               playsInline
+              preload="auto"
               className={`video-node ${idx === activeVideoIdx ? "active" : ""}`}
               onError={() => handleVideoError(idx)}
             />
@@ -785,10 +787,10 @@ export function MotoExperience() {
                   {/* Configurator preview image */}
                   <div className="studio-preview" style={{ marginTop: "15px" }}>
                     <img 
-                      src={currentSelectedColor.image} 
+                      src={getAssetPath(currentSelectedColor.image)} 
                       alt={currentSelectedColor.name} 
                       className="active"
-                      onClick={() => setLightboxImg({ path: currentSelectedColor.image, title: `${moto.name} — ${currentSelectedColor.name}`, desc: moto.description })}
+                      onClick={() => setLightboxImg({ path: getAssetPath(currentSelectedColor.image), title: `${moto.name} — ${currentSelectedColor.name}`, desc: moto.description })}
                     />
                     <div className="studio-label">{currentSelectedColor.name} — Click to Zoom</div>
                   </div>
@@ -838,7 +840,7 @@ export function MotoExperience() {
 
               <div className="studio-preview">
                 <img 
-                  src={globalStudioColor.image} 
+                  src={getAssetPath(globalStudioColor.image)} 
                   alt={globalStudioColor.name} 
                   className="active"
                 />
@@ -861,10 +863,10 @@ export function MotoExperience() {
                   <div 
                     key={m.id} 
                     className="gallery-item"
-                    onClick={() => setLightboxImg({ path: CONFIGURATOR_SWATCHES[idx % CONFIGURATOR_SWATCHES.length].image, title: m.name, desc: m.description })}
+                    onClick={() => setLightboxImg({ path: getAssetPath(CONFIGURATOR_SWATCHES[idx % CONFIGURATOR_SWATCHES.length].image), title: m.name, desc: m.description })}
                   >
                     <img 
-                      src={CONFIGURATOR_SWATCHES[idx % CONFIGURATOR_SWATCHES.length].image} 
+                      src={getAssetPath(CONFIGURATOR_SWATCHES[idx % CONFIGURATOR_SWATCHES.length].image)} 
                       alt={m.name} 
                     />
                     <div className="gallery-info">
@@ -983,7 +985,7 @@ export function MotoExperience() {
               >
                 ✕ CLOSE
               </button>
-              <img src={lightboxImg.path} alt={lightboxImg.desc} />
+              <img src={getAssetPath(lightboxImg.path)} alt={lightboxImg.desc} />
               <div className="lightbox-caption">{lightboxImg.title} — {lightboxImg.desc}</div>
             </div>
           </div>

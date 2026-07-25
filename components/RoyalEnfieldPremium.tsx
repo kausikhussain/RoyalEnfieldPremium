@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Scene } from "./Scene";
 import { SmoothScrollProvider } from "./SmoothScrollProvider";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
+import { getAssetPath } from "@/utils/assetPath";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -814,6 +815,7 @@ export function RoyalEnfieldPremium() {
       }
 
       if (key === activeVideo) {
+        element.muted = true;
         element.play().catch(() => undefined);
       } else {
         element.pause();
@@ -941,11 +943,12 @@ export function RoyalEnfieldPremium() {
               videoRefs.current.hero = element;
             }}
             className={`re-bg-video ${activeVideo === "hero" ? "is-active" : ""}`}
-            src="/media/entrance-video.mp4"
+            src={getAssetPath("/media/entrance-video.mp4")}
             autoPlay
             loop
             muted
             playsInline
+            preload="auto"
           />
           {featuredModels.map((model) => (
             <video
@@ -954,10 +957,11 @@ export function RoyalEnfieldPremium() {
                 videoRefs.current[model.id] = element;
               }}
               className={`re-bg-video ${activeVideo === model.id ? "is-active" : ""}`}
-              src={model.video}
+              src={getAssetPath(model.video)}
               loop
               muted
               playsInline
+              preload="auto"
             />
           ))}
           <div className="re-video-overlay" />
@@ -1064,7 +1068,7 @@ export function RoyalEnfieldPremium() {
 
           <section className="re-cinematic-break">
             <div className="re-break-media re-parallax-band">
-              <video src="/media/cinematic-gt650.mp4" autoPlay loop muted playsInline />
+              <video src={getAssetPath("/media/cinematic-gt650.mp4")} autoPlay loop muted playsInline preload="auto" />
             </div>
             <div className="re-break-copy re-reveal-on-scroll">
               <p className="re-kicker">Scene Transition</p>
@@ -1138,7 +1142,7 @@ export function RoyalEnfieldPremium() {
                   </div>
 
                   <div className="re-film-window magnetic">
-                    <video src={model.video} autoPlay loop muted playsInline />
+                    <video src={getAssetPath(model.video)} autoPlay loop muted playsInline preload="auto" />
                     <div className="re-film-caption">
                       <span>Live chapter soundtrack</span>
                       <strong>{model.soundtrack}</strong>
@@ -1166,7 +1170,7 @@ export function RoyalEnfieldPremium() {
                   <div className="re-gallery-strip">
                     {model.gallery.map((item) => (
                       <figure key={item.label} className="re-gallery-card magnetic">
-                        <img src={item.image} alt={`${model.name} in ${item.label}`} />
+                        <img src={getAssetPath(item.image)} alt={`${model.name} in ${item.label}`} />
                         <figcaption>{item.label}</figcaption>
                       </figure>
                     ))}
@@ -1187,7 +1191,7 @@ export function RoyalEnfieldPremium() {
 
           <section className="re-cinematic-break re-cinematic-break--wide">
             <div className="re-break-media re-parallax-band">
-              <video src="/media/gt-650-clip2.mp4" autoPlay loop muted playsInline />
+              <video src={getAssetPath("/media/gt-650-clip2.mp4")} autoPlay loop muted playsInline preload="auto" />
             </div>
             <div className="re-break-copy re-reveal-on-scroll">
               <p className="re-kicker">Living Atmosphere</p>
@@ -1221,8 +1225,8 @@ export function RoyalEnfieldPremium() {
                   >
                     <span className="re-selector-index">{(featuredModels.indexOf(model) + 1).toString().padStart(2, "0")}</span>
                     <span className="re-selector-thumb">
-                      <img src={model.gallery[0].image} alt="" />
-                      <video src={model.video} autoPlay muted loop playsInline preload="metadata" />
+                      <img src={getAssetPath(model.gallery[0].image)} alt="" />
+                      <video src={getAssetPath(model.video)} autoPlay muted loop playsInline preload="metadata" />
                     </span>
                     <span className="re-selector-copy">
                       <small>{model.family}</small>
@@ -1235,9 +1239,9 @@ export function RoyalEnfieldPremium() {
 
               <div className="re-showcase-stage" key={`${activeModel.id}-${activeSwatch.name}`}>
                 <div className="re-showcase-ambient" />
-                <video className="re-showcase-video" src={activeModel.video} autoPlay loop muted playsInline />
+                <video className="re-showcase-video" src={getAssetPath(activeModel.video)} autoPlay loop muted playsInline preload="auto" />
                 <div className="re-showcase-bike magnetic">
-                  <img src={activeSwatch.image} alt={`${activeModel.name} in ${activeSwatch.name}`} />
+                  <img src={getAssetPath(activeSwatch.image)} alt={`${activeModel.name} in ${activeSwatch.name}`} />
                   <span className="re-showcase-reflection" />
                   <span className="re-showcase-shadow" />
                 </div>
@@ -1414,7 +1418,7 @@ export function RoyalEnfieldPremium() {
 
           <footer className="re-footer">
             <div className="re-footer-video">
-              <video src="/media/entrance-video.mp4" autoPlay loop muted playsInline />
+              <video src={getAssetPath("/media/entrance-video.mp4")} autoPlay loop muted playsInline preload="auto" />
             </div>
             <div className="re-footer-overlay" />
             <div className="re-footer-content">
